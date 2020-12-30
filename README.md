@@ -5,7 +5,7 @@
 #Ajax 的缺点： 
   <br>1.没有浏览历史，不能回退 <br>
   2.存在跨域问题（同源）<br>
-  3.SEO 不友好
+  3.SEO 不友好<br>
 ##Http
 
 ##请求报文
@@ -41,8 +41,8 @@
     </html>
 ```
 
-*404 Not Found
-*403 Forbidden
-*401 Unauthorized
-*500 Internal server error
-*200 OK
+*404 Not Found<br>
+*403 Forbidden<br>
+*401 Unauthorized<br>
+*500 Internal server error<br>
+*200 OK<br>
