@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CORS</title>
+	</head>
+	<style>
+		#result {
+			width: 300px;
+			height: 100px;
+			border: 1px solid #089;
+		}
+	</style>
+	<body>
+		<button>点击发送请求</button>
+		<div id="result"></div>
+
+		<script>
+			/*CORS 特点:
+				完全在服务器中进行处理，支持get post请求，CORS新增了一组http首部字段，
+				允许服务器声明哪些源站通过浏览器有权限访问哪些资源
+			*/
+			const btn = document.getElementsByTagName("button")[0];
+			const div = document.getElementById("result");
+			btn.onclick = function () {
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", "http://127.0.0.1:8000/cors-server");
+				xhr.send();
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							div.innerHTML = xhr.response;
+						}
+					}
+				};
+			};
+		</script>
+	</body>
+</html>
