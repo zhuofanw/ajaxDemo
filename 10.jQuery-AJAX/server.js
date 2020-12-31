@@ -34,18 +34,24 @@ app.get("/ie", (request, response) => {
 	response.send("hello IE-2");
 });
 //延时响应
-app.get("/delay", (request, response) => {
+app.all("/delay", (request, response) => {
 	//设置响应头 设置允许跨域
 	response.setHeader("Access-Control-Allow-Origin", "*");
+	//自定义头部信息
+	response.setHeader("Access-Control-Allow-Headers", "*");
 	//设置响应体
+	const data = { name: "Frank", age: "25" };
+	const str = JSON.stringify(data);
 	setTimeout(() => {
-		response.send("延时响应");
-	}, 3000);
+		response.send(str);
+	}, 1000);
 });
 //jQuery服务
 app.all("/jquery-server", (request, response) => {
 	//设置响应头 设置允许跨域
 	response.setHeader("Access-Control-Allow-Origin", "*");
+	response.setHeader("Access-Control-Allow-Headers", "*");
+
 	const data = { name: "Frank", age: "25" };
 	const str = JSON.stringify(data);
 	// response.send("hello jquery ajax");
