@@ -20,7 +20,16 @@
 			result.addEventListener("mouseover", function () {
 				const xhr = new XMLHttpRequest();
 				xhr.open("POST", "http://127.0.0.1:8000/server");
-				xhr.send();
+				//设置请求头,使用setRequestHeader-- 'key','value' pair格式设置
+				xhr.setRequestHeader(
+					"Content-Type",
+					"application/x-www-form-urlencoded"
+				);
+				//自定义请求头
+				xhr.setRequestHeader("Name", "Frank");
+				//设置请求体,在send里添加参数
+				xhr.send("a=100&b=200&c=300");
+				// xhr.send("a:100&b:200&c:300");
 				xhr.onreadystatechange = function () {
 					if (xhr.readyState === 4) {
 						if (xhr.status >= 200 && xhr.status < 300) {

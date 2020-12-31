@@ -9,12 +9,15 @@ app.get("/server", (request, response) => {
 	//设置响应头 设置允许跨域
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	//设置响应体
-	response.send("hello AJAX");
+	response.send("hello AJAX GET");
 });
 
-app.post("/server", (request, response) => {
+//可以接受任意类型的请求
+app.all("/server", (request, response) => {
 	//设置响应头 设置允许跨域
 	response.setHeader("Access-Control-Allow-Origin", "*");
+	//响应头,允许自定义头部信息
+	response.setHeader("Access-Control-Allow-Headers", "*");
 	//设置响应体
 	response.send("hello AJAX POST");
 });
