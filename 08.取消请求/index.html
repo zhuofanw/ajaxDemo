@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>取消请求</title>
+	</head>
+	<style>
+		#result {
+			width: 200px;
+			height: 100px;
+			border: 1px solid #89b;
+		}
+	</style>
+	<body>
+		<button>点击发送请求</button>
+		<button>点击取消请求</button>
+		<div id="result"></div>
+		<script>
+			const btns = document.getElementsByTagName("button");
+			console.log(btns[1]);
+
+			let xhr = null;
+			btns[0].onclick = function () {
+				xhr = new XMLHttpRequest();
+				xhr.open("GET", "http://127.0.0.1:8000/delay");
+				xhr.send();
+			};
+			//abort手动取消
+			btns[1].onclick = function () {
+				xhr.abort();
+			};
+		</script>
+	</body>
+</html>
