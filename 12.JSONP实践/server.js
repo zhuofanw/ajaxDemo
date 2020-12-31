@@ -65,6 +65,17 @@ app.all("/check-username", (request, response) => {
 	let str = JSON.stringify(data);
 	response.end(`handle(${str})`);
 });
+
+app.all("/jquery-jsonp-server", (request, response) => {
+	const data = {
+		name: "frank",
+		city: ["北京", "上海", "深圳"],
+	};
+	let str = JSON.stringify(data);
+	//接收callback参数
+	let cb = request.query.callback;
+	response.end(`${cb}(${str})`);
+});
 app.listen(8000, () => {
 	console.log("服务已经启动，8000端口监听中....");
 });
